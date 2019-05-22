@@ -1,6 +1,6 @@
 # axios-gql
 
-> My epic Nuxt.js project
+> Simple project to learn Axios within GraphQL
 
 ## Build Setup
 
