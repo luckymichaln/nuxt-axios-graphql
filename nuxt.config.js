@@ -1,7 +1,12 @@
 import pkg from './package'
+require('dotenv').config()
 
 export default {
   mode: 'universal',
+
+  env: {
+    baseUrl: process.env.baseUrl || 'https://metaphysics-staging.artsy.net'
+  },
 
   /*
   ** Headers of the page

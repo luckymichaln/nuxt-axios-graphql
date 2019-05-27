@@ -1,40 +1,37 @@
 <template>
-  <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        axios-gql
-      </h1>
-      <h2 class="subtitle">
-        My epic Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
-      </div>
+  <section class="container artists">
+    <button @click="handleClick">Get Artsy</button>
+    <div v-for="(artist, index) in this.popularArtists" :key="index">
+      <h1>{{artist.name}}</h1>
+      <p>{{artist.bio}}</p>
+      <img :src="artist.imageUrl" />
     </div>
   </section>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Logo from '~/components/Logo.vue'
 
 export default {
+  computed: {
+    ...mapGetters('artists', ['popularArtists'])
+  },
+
+  methods: {
+    async handleClick() {
+      await this.$store.dispatch('artists/GET_DATA')
+      console.log(this.popularArtists)
+    }
+  },
+
   components: {
     Logo
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 .container {
   margin: 0 auto;
   min-height: 100vh;
@@ -42,6 +39,17 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.artists {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100vw;
+
+  button {
+    width: 100%;
+  }
 }
 
 .title {
