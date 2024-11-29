@@ -1,6 +1,6 @@
 # axios-gql
 
-> Simple Nuxt.js project to learn GraphQL within Axios library
+> Simple Nuxt.js project to learn GraphQL along with Axios library
 
 ## Build Setup
 
